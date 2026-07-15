@@ -5,6 +5,7 @@ Static site — no build step, no dependencies. Drag the **contents** of this fo
 ```
 index.html
 menu.html
+pricing.html
 events.html
 about.html
 contact.html

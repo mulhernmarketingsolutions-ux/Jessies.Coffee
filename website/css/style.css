@@ -413,6 +413,80 @@ tr:last-child td { border-bottom: none; }
   color: #7a5a41;
 }
 
+/* Pricing tiers */
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--pink-strong);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -14px;
+  right: 24px;
+  background: var(--pink-strong);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.pricing-card .icon.icon-2 { background: var(--pink-strong); }
+.pricing-card .icon.icon-3 { background: var(--brown); color: var(--cream); }
+
+.pricing-card .price-tag {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  color: var(--pink-strong);
+  line-height: 1;
+  margin: 2px 0 6px;
+}
+
+.pricing-card .price-tag .unit {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #7a5a41;
+  font-weight: 500;
+}
+
+.pricing-card .minimum {
+  color: #7a5a41;
+  font-size: 0.85rem;
+  margin: 0 0 18px;
+}
+
+.pricing-card .includes {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+  flex-grow: 1;
+}
+
+.pricing-card .includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #6b4a30;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.pricing-card .includes li::before {
+  content: "✓";
+  color: var(--pink-strong);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
 /* ---------- Forms ---------- */
 .form-card {
   background: var(--white);
