@@ -1,4 +1,4 @@
-# Jessies. website
+# Jessie's. website
 
 Static site — no build step, no dependencies. Drag the **contents** of this folder (not the folder itself) into the root of your repo, so `index.html` ends up at the repo root alongside `css/`, `js/`, and `images/`.
 

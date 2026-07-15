@@ -13,7 +13,7 @@
   --white: #ffffff;
   --shadow: 0 10px 30px rgba(91, 52, 23, 0.12);
   --radius: 22px;
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Yeseva One", Georgia, serif;
   --font-body: "Poppins", "Segoe UI", sans-serif;
   --font-script: "Caveat", cursive;
 }
@@ -468,11 +468,11 @@ tr:last-child td { border-bottom: none; }
 }
 
 .poster-title {
-  font-family: "Anton", var(--font-display);
+  font-family: var(--font-display);
   font-weight: 400;
-  text-transform: uppercase;
-  font-size: clamp(3.2rem, 9vw, 6.5rem);
-  letter-spacing: 1px;
+  text-transform: none;
+  font-size: clamp(2.8rem, 7.5vw, 5.2rem);
+  letter-spacing: 0;
   color: var(--brown-dark);
   line-height: 0.95;
   margin: 0 0 8px;
