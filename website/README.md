@@ -9,6 +9,8 @@ pricing.html
 events.html
 about.html
 contact.html
+faq.html
+terms.html
 css/style.css
 js/script.js
 images/
@@ -29,4 +31,7 @@ Works as-is on GitHub Pages, Netlify, Vercel, or any static host — just point 
 - About page bio copy — written in Jessie's voice as a starting point, swap for her own words anytime
 
 ## Already live
-Real email (`hello@jessies.coffee`), phone ((720) 985-1265), Instagram (@jessiescoffeeco), and the event inquiry form (posts to Formspree).
+Real email (`hello@jessies.coffee`), phone ((720) 985-1265), Instagram (@jessiescoffeeco), and the event inquiry form (submits to a Google Apps Script that logs to a Sheet and emails both the business and the customer — see `/google-sheets-automation/Code.gs` one level up from this folder for that setup).
+
+## Legal pages
+`terms.html` is a general-purpose starting template, not lawyer-reviewed legal advice — worth having an attorney look over before leaning on it for anything high-stakes. `faq.html` covers cottage food licensing, booking logistics, and dietary questions.

@@ -26,6 +26,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -290,6 +294,12 @@ section {
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
 
@@ -615,7 +625,19 @@ tr:last-child td { border-bottom: none; }
 @media (max-width: 900px) {
   .poster-grid { grid-template-columns: 1fr; min-height: unset; text-align: center; }
   .poster-copy { text-align: left; }
-  .doodle { display: none; }
+
+  /* Photo is the first item in the stack (the image itself is square, so
+     it's a reliable ~full-container-width block up top) — regroup the
+     doodles to frame just the photo instead of scattering across the
+     now much-taller single-column layout. Two get retired to avoid clutter. */
+  .doodle.scribble-3,
+  .doodle.sparkle-3 { display: none; }
+
+  .doodle.heart-1    { top: -6px;  left: 8%;  right: auto; bottom: auto; width: 18px; }
+  .doodle.scribble-1 { top: -10px; right: 4%; left: auto;  bottom: auto; width: 58px; }
+  .doodle.sparkle-1  { top: 34px;  left: 2%;  right: auto; bottom: auto; width: 24px; }
+  .doodle.sparkle-2  { top: 120px; right: 4%; left: auto;  bottom: auto; width: 20px; }
+  .doodle.scribble-2 { top: 260px; left: 50%; right: auto; bottom: auto; width: 66px; transform: translateX(-50%) rotate(-6deg); }
 }
 
 /* ---------- Quote / script accent ---------- */
@@ -665,8 +687,84 @@ tr:last-child td { border-bottom: none; }
   border-top: 1px solid rgba(255,255,255,0.1);
   padding-top: 22px;
   font-size: 0.82rem;
-  opacity: 0.7;
+  opacity: 0.85;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 18px;
   text-align: center;
+}
+
+.footer-bottom .divider { opacity: 0.5; }
+
+.footer-bottom a {
+  display: inline;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.footer-bottom a:hover { opacity: 1; }
+
+.credit-link {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 7px;
+}
+
+.credit-link img {
+  width: 16px;
+  height: auto;
+  opacity: 0.9;
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-group { margin-bottom: 40px; }
+
+.faq-group h3 {
+  color: var(--brown);
+  margin-bottom: 16px;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--brown-dark);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--pink-strong);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-item .faq-answer {
+  padding: 0 22px 20px;
+  color: #6b4a30;
+  font-size: 0.96rem;
+  margin: 0;
 }
 
 /* ---------- Scroll sipper ---------- */
@@ -715,9 +813,15 @@ tr:last-child td { border-bottom: none; }
   .hero-copy .btn-row { justify-content: center; }
   .hero-photo { order: -1; }
   .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .flavor-grid { grid-template-columns: 1fr; }
+  .flavor-card { flex-wrap: wrap; }
 }
 
 @media (max-width: 760px) {
