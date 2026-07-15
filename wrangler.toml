@@ -2,4 +2,4 @@ name = "jessies-coffee"
 compatibility_date = "2025-01-01"
 
 [assets]
-directory = "./website"
+directory = "./website" 
