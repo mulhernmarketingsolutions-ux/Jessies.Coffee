@@ -45,22 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("resize", updateSipper);
   }
 
-  // Inquiry form: pre-select a package from a ?package= query param
-  // (used by the "Choose This Package" buttons on the Pricing page),
-  // validate required fields, then submit via fetch to QUOTE_ENDPOINT.
-  var form = document.querySelector("#event-form");
-  if (form) {
-    var params = new URLSearchParams(window.location.search);
-    var pkg = params.get("package");
-    if (pkg) {
-      var pkgField = form.querySelector("#package");
-      if (pkgField) pkgField.value = pkg;
-    }
+  // Generic handler: validates required fields, then submits a form via
+  // fetch to QUOTE_ENDPOINT (shared by the event inquiry form and every
+  // lead-magnet signup form). successMsg is shown when the submit resolves.
+  function wireForm(form, msg, successMsg) {
+    if (!form) return;
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      var msg = document.querySelector("#form-msg");
       var required = form.querySelectorAll("[required]");
       var missing = false;
       required.forEach(function (field) {
@@ -68,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       if (missing) {
         if (msg) {
-          msg.textContent = "Please fill in all required fields before submitting.";
+          msg.textContent = "Please fill in the required field(s) before submitting.";
           msg.style.color = "#b3452c";
         }
         return;
@@ -102,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
             throw new Error("Submission failed");
           }
           if (msg) {
-            msg.textContent = "Thanks! We'll follow up within a few days.";
+            msg.textContent = successMsg;
             msg.style.color = "#3f7a4a";
           }
           form.reset();
@@ -118,4 +111,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   }
+
+  // Event inquiry form: pre-select a package from a ?package= query param
+  // (used by the "Choose This Package" buttons on the Pricing page).
+  var eventForm = document.querySelector("#event-form");
+  if (eventForm) {
+    var params = new URLSearchParams(window.location.search);
+    var pkg = params.get("package");
+    if (pkg) {
+      var pkgField = eventForm.querySelector("#package");
+      if (pkgField) pkgField.value = pkg;
+    }
+    wireForm(eventForm, document.querySelector("#form-msg"), "Thanks! We'll follow up within a few days.");
+  }
+
+  // Lead magnet signup forms (there may be more than one on a page's
+  // worth of copy — Home and Menu both have one). Each form's message
+  // paragraph is the element immediately after it in the markup.
+  document.querySelectorAll(".lead-magnet-form").forEach(function (lmForm) {
+    wireForm(lmForm, lmForm.nextElementSibling, "Sent! Check your inbox for the guide.");
+  });
 });
